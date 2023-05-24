@@ -24,7 +24,12 @@ server.listen(3000, () => {
   console.log("Server started on port 3000");
 });
 
-const io = socketIO(server);
+const io = socketIO(server, {
+  cors: {
+    origin: "https://nodejs-socket-2023.vercel.app",
+    methods: ["GET", "POST"],
+  },
+});
 io.path("/socket");
 
 io.on("connection", (socket) => {
