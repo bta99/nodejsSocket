@@ -16,15 +16,16 @@ const server = require("http").Server(app);
 //   next();
 // });
 
-app.get("/", cors(), (req, res) => {
+app.get("/a", cors(), (req, res) => {
   return res.send("Abcxyz");
 });
 
-server.listen(8080, () => {
-  console.log("Server started on port 8080");
+server.listen(3000, () => {
+  console.log("Server started on port 3000");
 });
 
 const io = socketIO(server);
+io.path("/socket");
 
 io.on("connection", (socket) => {
   console.log("Đã có người kết nối");
