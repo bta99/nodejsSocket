@@ -27,15 +27,12 @@ server.listen(5500, () => {
   console.log("Server started on port 5500");
 });
 
-const io = socketIO(
-  server
-  //   {
-  //   cors: {
-  //     origin: "http://192.168.0.103:5173/",
-  //     // methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  //   },
-  // }
-);
+const io = socketIO(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  },
+});
 // io.path("/socket");
 
 io.on("connection", (socket) => {
